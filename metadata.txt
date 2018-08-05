@@ -1,0 +1,39 @@
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=Parcels from polygon
+qgisMinimumVersion=2.0
+description=Splits a polygon into smaller polygons based on area and direction
+version=0.1
+author=Nicu Tofan/Advaita SRL
+email=advaita.brasov@gmail.com
+
+about=Exsiting solutions for splitting an existing polygon into parcels are not satisfactory. This one allows the user to choose a direction on the map and to enter one or more areas for the parcels that should be created. The feature only applies to selected polygon.
+
+tracker=https://github.com/AdvaitaTopCad/ParcelsFromPolygon/issues
+repository=https://github.com/AdvaitaTopCad/ParcelsFromPolygon.git
+# End of mandatory metadata
+
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=cadastre, polygon, vector
+
+homepage=https://advaitatopcad.github.io/ParcelsFromPolygon/
+category=Vector
+icon=icon.png
+# experimental flag
+experimental=True
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
