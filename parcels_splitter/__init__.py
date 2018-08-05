@@ -23,9 +23,9 @@
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QAction, QIcon
 # Initialize Qt resources from file resources.py
-import resources
+from . import resources
 # Import the code for the dialog
-from parcels_splitter_dialog import ParcelsFromPolygonDialog
+from .parcels_splitter_dialog import ParcelsFromPolygonDialog
 import os.path
 
 
@@ -43,7 +43,7 @@ class ParcelsFromPolygon:
         # Save reference to the QGIS interface
         self.iface = iface
         # initialize plugin directory
-        self.plugin_dir = os.path.dirname(__file__)
+        self.plugin_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         # initialize locale
         locale = QSettings().value('locale/userLocale')[0:2]
         locale_path = os.path.join(

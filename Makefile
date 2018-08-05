@@ -47,6 +47,7 @@ PY_FILES = \
 	parcels_splitter.py parcels_splitter_dialog.py
 
 UI_FILES = parcels_splitter_dialog_base.ui
+COMPILED_UI_FILES = parcels_splitter_dialog_base_ui.py
 
 EXTRAS = metadata.txt icon.png
 

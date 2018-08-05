@@ -26,7 +26,9 @@ import os
 from PyQt4 import QtGui, uic
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'parcels_splitter_dialog_base.ui'))
+    os.path.dirname(__file__),
+    'parcels_splitter_dialog_base.ui'),
+    resource_suffix='')
 
 
 class ParcelsFromPolygonDialog(QtGui.QDialog, FORM_CLASS):
