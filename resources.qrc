@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/plugins/ParcelsFromPolygon" >
-        <file>icon.png</file>
-    </qresource>
-</RCC>
