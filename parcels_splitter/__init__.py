@@ -133,7 +133,7 @@ class ParcelsFromPolygon:
         """
 
         # Create the dialog (after translation) and keep reference
-        self.dlg = ParcelsFromPolygonDialog()
+        self.dlg = ParcelsFromPolygonDialog(self)
 
         icon = QIcon(icon_path)
         action = QAction(icon, text, parent)
@@ -184,10 +184,34 @@ class ParcelsFromPolygon:
         """Run method that performs all the real work"""
         # show the dialog
         self.dlg.show()
+        self.dlg.raise_()
         # Run the dialog event loop
-        result = self.dlg.exec_()
-        # See if OK was pressed
-        if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
+        while True:
+            result = self.dlg.exec_()
+            data = {'ok': False}
+            # See if OK was pressed
+            if result:
+                # Do something useful here - delete the line containing pass and
+                # substitute with your code.
+                try:
+                    data['first_angle'] = self.dlg.first_angle()
+                    data['advance_mode'] = self.dlg.advanceMode()
+                    data['parcel_for_rest'] = self.dlg.parcelForTheRest()
+                    data['areas'] = self.dlg.areas()
+                    data['polygon'], ttt = self.dlg.targetPolygon()
+                    data['ok'] = True
+                    print(data['polygon'])
+                    print(dir(data['polygon']))
+                    print(data['polygon'].__class__.__name__)
+                    # ttt = ttt.geometry()
+                    # print(ttt)
+                    # print(dir(ttt))
+                    # print(ttt.__class__.__name__)
+                    break
+                except ValueError as exc:
+                    pass
+            else:
+                break
+
+        if data['ok']:
             pass

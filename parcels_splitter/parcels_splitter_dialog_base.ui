@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>363</width>
+    <width>334</width>
     <height>567</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>Parcels from polygon</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/plugins/ParcelsFromPolygon/icon.png</normaloff>:/plugins/ParcelsFromPolygon/icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -45,6 +45,9 @@
             <property name="text">
              <string>Radians</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item row="1" column="0">
@@ -60,7 +63,7 @@
              <string>Gradians</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -103,6 +106,9 @@
           </item>
           <item row="1" column="1">
            <widget class="QDoubleSpinBox" name="counter_Degrees">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="decimals">
              <number>16</number>
             </property>
@@ -116,6 +122,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QDoubleSpinBox" name="counter_Gradians">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="decimals">
              <number>16</number>
             </property>
@@ -128,15 +137,6 @@
            </widget>
           </item>
          </layout>
-         <zorder>radioButton_Radians</zorder>
-         <zorder>radioButton_Radians</zorder>
-         <zorder>groupBox_2</zorder>
-         <zorder>radioButton_Degrees</zorder>
-         <zorder>radioButton_Gradians</zorder>
-         <zorder>layoutWidget</zorder>
-         <zorder>counter_Radians</zorder>
-         <zorder>counter_Degrees</zorder>
-         <zorder>counter_Gradians</zorder>
         </widget>
        </item>
        <item>
@@ -182,6 +182,9 @@
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QPushButton" name="pushButton_PickLastDirection">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="text">
                <string>Pick</string>
               </property>
@@ -204,6 +207,9 @@
           </item>
           <item row="1" column="1">
            <widget class="QDoubleSpinBox" name="counter_PostConst">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="decimals">
              <number>16</number>
             </property>
@@ -217,6 +223,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QDoubleSpinBox" name="counter_PostProportional">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="decimals">
              <number>16</number>
             </property>
@@ -244,15 +253,19 @@
           <string>Each line should contain the area for one parcel</string>
          </property>
          <property name="buddy">
-          <cstring>plainTextEdit</cstring>
+          <cstring>plainTextEdit_Areas</cstring>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        <widget class="QPlainTextEdit" name="plainTextEdit_Areas">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkBox_ParcelForRest">
          <property name="text">
           <string>Create a parcel for the rest of the polygon</string>
          </property>
@@ -301,6 +314,25 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>radioButton_Radians</tabstop>
+  <tabstop>counter_Radians</tabstop>
+  <tabstop>radioButton_Degrees</tabstop>
+  <tabstop>counter_Degrees</tabstop>
+  <tabstop>radioButton_Gradians</tabstop>
+  <tabstop>counter_Gradians</tabstop>
+  <tabstop>pushButton_PickFirstDir</tabstop>
+  <tabstop>radioButton_PostKeepConstant</tabstop>
+  <tabstop>radioButton_PostConst</tabstop>
+  <tabstop>counter_PostConst</tabstop>
+  <tabstop>radioButton_PostProportional</tabstop>
+  <tabstop>counter_PostProportional</tabstop>
+  <tabstop>pushButton_PickLastDirection</tabstop>
+  <tabstop>button_box</tabstop>
+  <tabstop>plainTextEdit_Areas</tabstop>
+  <tabstop>checkBox_ParcelForRest</tabstop>
+ </tabstops>
  <connections>
   <connection>
    <sender>button_box</sender>
@@ -331,6 +363,294 @@
     <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Radians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Radians</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Radians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Degrees</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>191</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Radians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Gradians</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>268</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Degrees</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Radians</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>236</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Degrees</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Degrees</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Degrees</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Gradians</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>247</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Gradians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Radians</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Gradians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Degrees</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>176</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_Gradians</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_Gradians</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>279</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostKeepConstant</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostConst</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>433</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostKeepConstant</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostProportional</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>463</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostConst</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostConst</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostConst</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostProportional</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>41</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>464</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostProportional</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostConst</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostProportional</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>counter_PostProportional</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>460</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostKeepConstant</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_PickLastDirection</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>213</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostConst</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_PickLastDirection</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_PostProportional</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_PickLastDirection</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>459</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>481</y>
     </hint>
    </hints>
   </connection>
